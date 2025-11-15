@@ -1,56 +1,47 @@
 import java.util.*;
 
 public class Q42 {
-    public static int maxLeft(int arr[], int index) {
+    class Solution {
 
-        int max = 0;
-        for (int i = index; i >= 0; i--) {
-            if (arr[i] > max) {
-                max = arr[i];
+        public static int maxLeft(int arr[], int index) {
+            int max = 0;
+            for (int i = index - 1; i >= 0; i--) {
+                max = Math.max(max, arr[i]);
             }
+            return max;
         }
-
-        return max;
-    }
-
-
-    public static int maxRight(int arr[],int index){
-
-        int max=0;
-        for(int i=index;i<arr.length;i++){
-            
-            if(arr[i] > max){
-                max=arr[i];
+    
+        public static int maxRight(int arr[], int index) {
+            int max = 0;
+            for (int i = index + 1; i < arr.length; i++) {
+                max = Math.max(max, arr[i]);
             }
+            return max;
         }
-
-
-
-        return max;
-    }
-
-    public static int trap(int[] arr) {
-
-            int sum=0;
-
-        for (int i = 0; i < arr.length; i++) {
-
-            int width=1;
-            int height=arr[i];
-
-            int min =Math.min(maxRight(arr, i),maxLeft(arr, i))-height;
-            System.out.println("min --> "+min);
-            sum+=min;
-            
-
-
+    
+        public static int trap(int[] arr) {
+    
+            int sum = 0;
+    
+            for (int i = 0; i < arr.length; i++) {
+    
+                int left = maxLeft(arr, i);
+                int right = maxRight(arr, i);
+    
+                int min = Math.min(left, right);
+    
+                if (min > arr[i]) {
+                    sum += min - arr[i];
+                }
+            }
+    
+            return sum;
         }
-
-        return sum;
     }
+    
 
     public static void main(String args[]) {
-        int[] buildings = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] buildings = {6,5,4,3,2,1};
         
         // System.out.println( "left --> "+maxLeft(buildings, 1));
         // System.out.println( "right --> "+maxRight(buildings, 1));
@@ -61,3 +52,4 @@ public class Q42 {
 
     }
 }
+

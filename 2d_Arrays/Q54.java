@@ -19,13 +19,17 @@ public class Q54 {
         int right=matrix[0].length-1;
         int dir=0;
 
+        System.out.println(down +" "+right);
+        System.out.println(matrix[0].length);
+
+        
        
 
         int n=(down+1)*(right+1);
         System.out.println("n --> "+n);
         int j=0;
 
-        while(dir < 4 && j<n){
+        while(top <= down && left <= right){
 
           if(dir==0){
 
@@ -90,15 +94,21 @@ public class Q54 {
             //   {13,14,15,16}
             // };
 
-            int [][]arr=
-            { {1,2,3,4},
-              {5,6,7,8},
-              {9,10,11,12}
-            };
+            // int [][]arr=
+            // { {1,2,3,4},
+            //   {5,6,7,8},
+            //   {9,10,11,12}
+            // };
 
-
-            System.out.println(arr[0].length);
+            int [][]arr={{3},{2}};
+            System.out.println("arr[0].length "+arr[0].length);
             System.out.println(arr.length);
+
+           
+
+
+            // System.out.println(arr[0].length);
+            // System.out.println(arr.length);
 
             List<Integer> result=spiralOrder(arr);
             System.out.println(result);
